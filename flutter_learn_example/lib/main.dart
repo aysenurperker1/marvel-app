@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_learn_example/pages/home_pages.dart';
+import 'package:flutter_learn_example/pages/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,17 +14,22 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData.dark().copyWith(
+      theme: ThemeData.light().copyWith(
         appBarTheme: const AppBarTheme(
-          centerTitle: true,
+          // centerTitle: true,
           backgroundColor: Colors.transparent,
           elevation: 0,
         ),
         floatingActionButtonTheme: const FloatingActionButtonThemeData(
-          backgroundColor: Colors.white54,
+          backgroundColor: Colors.black,
+        ),
+        iconTheme: const IconThemeData(color: Colors.black, size: 30),
+        textTheme: const TextTheme(
+          headline6:
+              TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
         ),
       ),
-      home: const HomePage(),
+      home: const SplashScreen(),
     );
   }
 }
