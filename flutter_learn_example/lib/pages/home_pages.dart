@@ -9,20 +9,17 @@ class HomePage extends StatelessWidget {
       backgroundColor: Theme.of(context).colorScheme.onPrimary,
       appBar: AppBar(
         title: Padding(
-          padding:
-              const EdgeInsets.only(top: 20) + const EdgeInsets.only(left: 25),
+          padding: const EdgeInsets.only(top: 20),
           child: _ImageAdd(name: ImagePath().blacksMarvel),
         ),
         actions: [
           IconButton(
             onPressed: () {},
             icon: Padding(
-              padding: const EdgeInsets.only(top: 15),
-              child: Icon(
-                Icons.search_outlined,
-                color: Theme.of(context).iconTheme.color,
-              ),
-            ),
+                padding: const EdgeInsets.only(
+                  top: 15,
+                ),
+                child: _ImageAdd(name: ImagePath().blacksIcon)),
           ),
         ],
       ),
@@ -56,13 +53,6 @@ class HomePage extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: const SizedBox(
-        width: 100,
-        height: 80,
-        child: BottomBarFor(),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: const FloatingButtonExtract(),
     );
   }
 }
@@ -74,8 +64,8 @@ class _ImageAdd extends StatelessWidget {
   Widget build(BuildContext context) {
     return Image.asset(
       _pathAdd,
-      height: 30,
-      width: 80,
+      height: 28,
+      width: 100,
     );
   }
 
@@ -84,6 +74,7 @@ class _ImageAdd extends StatelessWidget {
 
 class ImagePath {
   final String blacksMarvel = "blacksmarvel";
+  final String blacksIcon = "blacksIcon";
 }
 
 class ButtonElevat extends StatelessWidget {
@@ -102,64 +93,14 @@ class ButtonElevat extends StatelessWidget {
       onPressed: () {},
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(colorin),
+        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        )),
       ),
       child: Text(
         title,
         style: TextStyle(color: textColorin),
-      ),
-    );
-  }
-}
-
-class FloatingButtonExtract extends StatelessWidget {
-  const FloatingButtonExtract({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return PhysicalModel(
-      color: Colors.white,
-      shape: BoxShape.circle,
-      shadowColor: Colors.black,
-      elevation: 10,
-      borderRadius: BorderRadius.circular(10),
-      child: FloatingActionButton(
-        onPressed: () {},
-        backgroundColor:
-            Theme.of(context).floatingActionButtonTheme.backgroundColor,
-        child: const Icon(Icons.add),
-      ),
-    );
-  }
-}
-
-class BottomBarFor extends StatelessWidget {
-  const BottomBarFor({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return BottomAppBar(
-      shape: const CircularNotchedRectangle(),
-      notchMargin: 8.0,
-      child: Row(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.show_chart),
-          ),
-          const SizedBox(
-            width: 48,
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.filter_list),
-          ),
-        ],
       ),
     );
   }
@@ -220,48 +161,66 @@ class CharactersList extends StatelessWidget {
                             bottomLeft: Radius.circular(30),
                             topLeft: Radius.circular(30))),
                   ),
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        children: [
-                          Text(
-                            textAlign: TextAlign.left,
-                            entries[index],
-                            style: Theme.of(context)
-                                .textTheme
-                                .subtitle1
-                                ?.copyWith(fontFamily: "ArchivoBlack"),
-                          ),
-                          Text(
-                            names[index],
-                            style:
-                                Theme.of(context).textTheme.subtitle1?.copyWith(
-                                      fontSize: 15,
-                                    ),
-                          ),
-                          const SizedBox(
-                            height: 40,
-                          ),
-                          SizedBox(
-                            width: 125,
-                            height: 100,
-                            child: Flexible(
-                              child: Text(
-                                description[index],
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodySmall
-                                    ?.copyWith(color: Colors.black),
-                                maxLines: 4,
-                                //softWrap: false,
-                                overflow: TextOverflow.ellipsis,
-                              ),
+                  Expanded(
+                    child: Column(
+                      children: [
+                        Text(
+                          textAlign: TextAlign.left,
+                          entries[index],
+                          style: Theme.of(context)
+                              .textTheme
+                              .subtitle1
+                              ?.copyWith(fontFamily: "ArchivoBlack"),
+                        ),
+                        Text(
+                          names[index],
+                          style:
+                              Theme.of(context).textTheme.subtitle1?.copyWith(
+                                    fontSize: 15,
+                                  ),
+                        ),
+                        const SizedBox(
+                          height: 25,
+                        ),
+                        SizedBox(
+                          width: 125,
+                          height: 100,
+                          child: Flexible(
+                            child: Text(
+                              description[index],
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodySmall
+                                  ?.copyWith(color: Colors.black),
+                              maxLines: 4,
+                              //softWrap: false,
+                              overflow: TextOverflow.ellipsis,
                             ),
                           ),
-                        ],
-                      ),
+                        ),
+                        Flexible(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text("More Info",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodySmall
+                                      ?.copyWith(color: Colors.black)),
+                              const SizedBox(
+                                width: 20,
+                              ),
+                              IconButton(
+                                iconSize: 25,
+                                alignment: Alignment.bottomRight,
+                                onPressed: () {},
+                                icon: const Icon(
+                                    Icons.arrow_forward_ios_outlined),
+                              )
+                            ],
+                          ),
+                        )
+                      ],
                     ),
                   ),
                 ],

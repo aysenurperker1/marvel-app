@@ -15,20 +15,12 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData.light().copyWith(
-        scaffoldBackgroundColor: Colors.amber,
         appBarTheme: const AppBarTheme(
           // centerTitle: true,
           backgroundColor: Colors.transparent,
           elevation: 0,
         ),
-        floatingActionButtonTheme: const FloatingActionButtonThemeData(
-          backgroundColor: Colors.black,
-        ),
         iconTheme: const IconThemeData(color: Colors.black, size: 30),
-        textTheme: const TextTheme(
-          subtitle1:
-              TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
-        ),
       ),
       home: const SplashScreen(),
     );
