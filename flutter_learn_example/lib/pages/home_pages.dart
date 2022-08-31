@@ -9,12 +9,9 @@ class HomePage extends StatelessWidget {
       backgroundColor: Theme.of(context).colorScheme.onPrimary,
       appBar: AppBar(
         title: Padding(
-          padding: const EdgeInsets.only(top: 20),
-          child: Image.asset(
-            "images/marvelsred.png",
-            height: 35,
-            width: 100,
-          ),
+          padding:
+              const EdgeInsets.only(top: 20) + const EdgeInsets.only(left: 25),
+          child: _ImageAdd(name: ImagePath().blacksMarvel),
         ),
         actions: [
           IconButton(
@@ -30,7 +27,8 @@ class HomePage extends StatelessWidget {
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.only(top: 30),
+        padding: const EdgeInsets.symmetric(horizontal: 30) +
+            const EdgeInsets.only(top: 20),
         child: Column(
           children: [
             Row(
@@ -53,7 +51,8 @@ class HomePage extends StatelessWidget {
                 ),
               ],
             ),
-            const CharactersList(),
+            const SizedBox(height: 10),
+            CharactersList(),
           ],
         ),
       ),
@@ -66,6 +65,25 @@ class HomePage extends StatelessWidget {
       floatingActionButton: const FloatingButtonExtract(),
     );
   }
+}
+
+class _ImageAdd extends StatelessWidget {
+  const _ImageAdd({Key? key, required this.name}) : super(key: key);
+  final String name;
+  @override
+  Widget build(BuildContext context) {
+    return Image.asset(
+      _pathAdd,
+      height: 30,
+      width: 80,
+    );
+  }
+
+  String get _pathAdd => "assets/images/png/$name.png";
+}
+
+class ImagePath {
+  final String blacksMarvel = "blacksmarvel";
 }
 
 class ButtonElevat extends StatelessWidget {
@@ -148,19 +166,29 @@ class BottomBarFor extends StatelessWidget {
 }
 
 class CharactersList extends StatelessWidget {
-  const CharactersList({
+  CharactersList({
     Key? key,
   }) : super(key: key);
+  final List<String> entries = <String>['DEADPOOL', 'THOR', 'HULK'];
+  final List<String> names = <String>[
+    'Wade Wilson',
+    'Thor Odinson',
+    'Bruce Wayne'
+  ];
+  final List<String> description = <String>[
+    "Ajax, a twisted scientist, experiments on Wade Wilsona mercenary to cure him of",
+    "Thor Odinson, usually simply Thor, is a fictional character appearing in American comic books published by Marvel Comics",
+    'Usually simply Hulk, is a fictional character appearing in American comic books published by Marvel Comics'
+  ];
+
+  final List images = [
+    "assets/images/png/deadpooll.png",
+    'assets/images/jpg/thor.jpg',
+    'assets/images/jpg/hulk.jpg'
+  ];
 
   @override
   Widget build(BuildContext context) {
-    final List<String> entries = <String>['DEADPOOL', 'THOR', 'HULK'];
-    final List images = [
-      "images/deadpooll.png",
-      'images/thor.jpg',
-      'images/hulk.jpg'
-    ];
-
     return Expanded(
       child: ListView.separated(
         separatorBuilder: (BuildContext context, int index) => const Divider(),
@@ -170,11 +198,11 @@ class CharactersList extends StatelessWidget {
           return PhysicalModel(
             color: Colors.white,
             elevation: 10,
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(30),
             child: Container(
               height: 200,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(30),
                 color: Colors.white,
               ),
               child: Row(
@@ -189,11 +217,53 @@ class CharactersList extends StatelessWidget {
                           fit: BoxFit.fill,
                         ),
                         borderRadius: const BorderRadius.only(
-                            bottomLeft: Radius.circular(10),
-                            topLeft: Radius.circular(10))),
+                            bottomLeft: Radius.circular(30),
+                            topLeft: Radius.circular(30))),
                   ),
-                  Text(entries[index],
-                      style: Theme.of(context).textTheme.headline6),
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        children: [
+                          Text(
+                            textAlign: TextAlign.left,
+                            entries[index],
+                            style: Theme.of(context)
+                                .textTheme
+                                .subtitle1
+                                ?.copyWith(fontFamily: "ArchivoBlack"),
+                          ),
+                          Text(
+                            names[index],
+                            style:
+                                Theme.of(context).textTheme.subtitle1?.copyWith(
+                                      fontSize: 15,
+                                    ),
+                          ),
+                          const SizedBox(
+                            height: 40,
+                          ),
+                          SizedBox(
+                            width: 125,
+                            height: 100,
+                            child: Flexible(
+                              child: Text(
+                                description[index],
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodySmall
+                                    ?.copyWith(color: Colors.black),
+                                maxLines: 4,
+                                //softWrap: false,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),

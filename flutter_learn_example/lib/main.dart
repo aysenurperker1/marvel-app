@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData.light().copyWith(
+        scaffoldBackgroundColor: Colors.amber,
         appBarTheme: const AppBarTheme(
           // centerTitle: true,
           backgroundColor: Colors.transparent,
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
         ),
         iconTheme: const IconThemeData(color: Colors.black, size: 30),
         textTheme: const TextTheme(
-          headline6:
+          subtitle1:
               TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
         ),
       ),
