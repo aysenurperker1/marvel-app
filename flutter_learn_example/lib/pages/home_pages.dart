@@ -1,8 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_learn_example/component/characters.dart';
+import 'package:flutter_learn_example/component/description.dart';
+import 'package:flutter_learn_example/component/images.dart';
+import 'package:flutter_learn_example/component/names.dart';
+import 'package:flutter_learn_example/pages/description.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -10,7 +20,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Padding(
           padding: const EdgeInsets.only(top: 20),
-          child: _ImageAdd(name: ImagePath().blacksMarvel),
+          child: ImageAdd(name: ImagePath().blacksMarvel),
         ),
         actions: [
           IconButton(
@@ -19,7 +29,7 @@ class HomePage extends StatelessWidget {
                 padding: const EdgeInsets.only(
                   top: 15,
                 ),
-                child: _ImageAdd(name: ImagePath().blacksIcon)),
+                child: ImageAdd(name: ImagePath().blacksIcon)),
           ),
         ],
       ),
@@ -49,7 +59,7 @@ class HomePage extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 10),
-            CharactersList(),
+            const CharactersList(),
           ],
         ),
       ),
@@ -57,8 +67,8 @@ class HomePage extends StatelessWidget {
   }
 }
 
-class _ImageAdd extends StatelessWidget {
-  const _ImageAdd({Key? key, required this.name}) : super(key: key);
+class ImageAdd extends StatelessWidget {
+  const ImageAdd({Key? key, required this.name}) : super(key: key);
   final String name;
   @override
   Widget build(BuildContext context) {
@@ -107,26 +117,9 @@ class ButtonElevat extends StatelessWidget {
 }
 
 class CharactersList extends StatelessWidget {
-  CharactersList({
+  const CharactersList({
     Key? key,
   }) : super(key: key);
-  final List<String> entries = <String>['DEADPOOL', 'THOR', 'HULK'];
-  final List<String> names = <String>[
-    'Wade Wilson',
-    'Thor Odinson',
-    'Bruce Wayne'
-  ];
-  final List<String> description = <String>[
-    "Ajax, a twisted scientist, experiments on Wade Wilsona mercenary to cure him of",
-    "Thor Odinson, usually simply Thor, is a fictional character appearing in American comic books published by Marvel Comics",
-    'Usually simply Hulk, is a fictional character appearing in American comic books published by Marvel Comics'
-  ];
-
-  final List images = [
-    "assets/images/png/deadpooll.png",
-    'assets/images/jpg/thor.jpg',
-    'assets/images/jpg/hulk.jpg'
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -134,7 +127,7 @@ class CharactersList extends StatelessWidget {
       child: ListView.separated(
         separatorBuilder: (BuildContext context, int index) => const Divider(),
         padding: const EdgeInsets.all(8),
-        itemCount: entries.length,
+        itemCount: ListCharacters().characters.length,
         itemBuilder: (BuildContext context, int index) {
           return PhysicalModel(
             color: Colors.white,
@@ -153,7 +146,7 @@ class CharactersList extends StatelessWidget {
                     width: 170,
                     decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage(images[index]),
+                          image: AssetImage(ImagesPathsList().images[index]),
                           alignment: Alignment.centerLeft,
                           fit: BoxFit.fill,
                         ),
@@ -166,14 +159,14 @@ class CharactersList extends StatelessWidget {
                       children: [
                         Text(
                           textAlign: TextAlign.left,
-                          entries[index],
+                          ListCharacters().characters[index],
                           style: Theme.of(context)
                               .textTheme
                               .subtitle1
                               ?.copyWith(fontFamily: "ArchivoBlack"),
                         ),
                         Text(
-                          names[index],
+                          NamesList().names[index],
                           style:
                               Theme.of(context).textTheme.subtitle1?.copyWith(
                                     fontSize: 15,
@@ -187,7 +180,7 @@ class CharactersList extends StatelessWidget {
                           height: 100,
                           child: Flexible(
                             child: Text(
-                              description[index],
+                              DescriptionList().description[index],
                               style: Theme.of(context)
                                   .textTheme
                                   .bodySmall
@@ -213,7 +206,19 @@ class CharactersList extends StatelessWidget {
                               IconButton(
                                 iconSize: 25,
                                 alignment: Alignment.bottomRight,
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => MoreInfoPages(
+                                      images: AssetImage(
+                                          ImagesPathsList().images[index]),
+                                      characters:
+                                          ListCharacters().characters[index],
+                                      names: NamesList().names[index],
+                                      description:
+                                          DescriptionList().description[index],
+                                    ),
+                                  ));
+                                },
                                 icon: const Icon(
                                     Icons.arrow_forward_ios_outlined),
                               )
