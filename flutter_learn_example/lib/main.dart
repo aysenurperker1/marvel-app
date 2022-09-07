@@ -19,8 +19,10 @@ class MyApp extends StatelessWidget {
           centerTitle: true,
           backgroundColor: Colors.transparent,
           elevation: 0,
+          iconTheme: IconThemeData(
+            color: Colors.black,
+          ),
         ),
-        iconTheme: const IconThemeData(color: Colors.black, size: 30),
       ),
       home: const SplashScreen(),
     );
