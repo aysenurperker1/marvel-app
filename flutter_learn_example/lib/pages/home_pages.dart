@@ -33,6 +33,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
+      drawer: const Drawer(),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30) +
             const EdgeInsets.only(top: 20),
@@ -74,7 +75,7 @@ class ImageAdd extends StatelessWidget {
   Widget build(BuildContext context) {
     return Image.asset(
       _pathAdd,
-      height: 28,
+      height: 35,
       width: 100,
     );
   }
@@ -83,7 +84,7 @@ class ImageAdd extends StatelessWidget {
 }
 
 class ImagePath {
-  final String blacksMarvel = "blacksmarvel";
+  final String blacksMarvel = "comicsle";
   final String blacksIcon = "blacksIcon";
 }
 
@@ -123,7 +124,8 @@ class CharactersList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return Flexible(
+      fit: FlexFit.tight,
       child: ListView.separated(
         separatorBuilder: (BuildContext context, int index) => const Divider(),
         padding: const EdgeInsets.all(8),
@@ -178,17 +180,15 @@ class CharactersList extends StatelessWidget {
                         SizedBox(
                           width: 125,
                           height: 100,
-                          child: Flexible(
-                            child: Text(
-                              DescriptionList().description[index],
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodySmall
-                                  ?.copyWith(color: Colors.black),
-                              maxLines: 4,
-                              //softWrap: false,
-                              overflow: TextOverflow.ellipsis,
-                            ),
+                          child: Text(
+                            DescriptionList().description[index],
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodySmall
+                                ?.copyWith(color: Colors.black),
+                            maxLines: 4,
+                            //softWrap: false,
+                            overflow: TextOverflow.ellipsis,
                           ),
                         ),
                         Flexible(

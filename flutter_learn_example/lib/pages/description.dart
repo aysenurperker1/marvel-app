@@ -26,7 +26,7 @@ class _MoreInfoPagesState extends State<MoreInfoPages> {
         child: Column(
           children: [
             Expanded(
-              flex: 1,
+              flex: 2,
               child: Stack(
                 children: [
                   Container(
@@ -54,37 +54,43 @@ class _MoreInfoPagesState extends State<MoreInfoPages> {
             ),
             Expanded(
               flex: 1,
-              child: Container(
-                color: Colors.white,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: [
-                      Text(
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Column(
+                  children: [
+                    Align(
+                      alignment: AlignAlignment().alignTop,
+                      child: Text(
                         widget.characters,
                         style: Theme.of(context)
                             .textTheme
-                            .subtitle1
+                            .headline4
                             ?.copyWith(fontFamily: "ArchivoBlack"),
                       ),
-                      Text(
+                    ),
+                    Align(
+                      alignment: AlignAlignment().alignTop,
+                      child: Text(
                         widget.names,
-                        style: Theme.of(context).textTheme.subtitle1?.copyWith(
+                        style: Theme.of(context).textTheme.headline5?.copyWith(
                               fontSize: 15,
                             ),
                       ),
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      Text(
+                    ),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    Align(
+                      alignment: AlignAlignment().alignTop,
+                      child: Text(
                         widget.description,
                         style: Theme.of(context)
                             .textTheme
                             .bodySmall
                             ?.copyWith(color: Colors.black),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -93,4 +99,8 @@ class _MoreInfoPagesState extends State<MoreInfoPages> {
       ),
     );
   }
+}
+
+class AlignAlignment {
+  final alignTop = Alignment.topLeft;
 }
