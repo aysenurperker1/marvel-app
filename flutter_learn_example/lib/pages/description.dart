@@ -29,7 +29,7 @@ class _MoreInfoPagesState extends State<MoreInfoPages> {
             child: Stack(
               children: [
                 Container(
-                  width: 500,
+                  width: 450,
                   color: Colors.white,
                   child: Image(
                     image: widget.images,
