@@ -1,3 +1,8 @@
 class ListCharacters {
-  final List<String> characters = <String>['DEADPOOL', 'THOR', 'HULK'];
+  final List<String> characters = <String>[
+    'IRONMAN',
+    'HULK',
+    'DEADPOOL',
+    'THOR'
+  ];
 }
