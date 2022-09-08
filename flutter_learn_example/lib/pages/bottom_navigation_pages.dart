@@ -13,7 +13,7 @@ class _ChangePagesState extends State<ChangePages> {
   int selectedIndex = 0;
   final List<Widget> _widgetOptions = <Widget>[
     const HomePage(),
-    const FavoritePage()
+    const FavoritePage(),
   ];
 
   void onItemTapped(int index) {
@@ -36,12 +36,12 @@ class _ChangePagesState extends State<ChangePages> {
           onTap: onItemTapped,
           items: const [
             BottomNavigationBarItem(
-              icon: Icon(Icons.favorite_border_outlined),
-              label: 'Favorite',
-            ),
-            BottomNavigationBarItem(
               icon: Icon(Icons.filter_list),
               label: 'Characters',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.favorite_border_outlined),
+              label: 'Favorite',
             ),
           ],
         ),
