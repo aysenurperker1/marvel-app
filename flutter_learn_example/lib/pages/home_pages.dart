@@ -38,31 +38,30 @@ class _HomePageState extends State<HomePage> {
         padding: const EdgeInsets.symmetric(horizontal: 30) +
             const EdgeInsets.only(top: 20),
         child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: const [
-                ButtonElevat(
-                  title: "Popular",
-                  colorin: Colors.red,
-                  textColorin: Colors.white,
-                ),
-                ButtonElevat(
-                  title: "A-Z",
-                  colorin: Colors.white,
-                  textColorin: Colors.black,
-                ),
-                ButtonElevat(
-                  title: "Last viewed",
-                  colorin: Colors.white,
-                  textColorin: Colors.black,
-                ),
-              ],
-            ),
-            const SizedBox(height: 10),
-            const CharactersList(),
+          children: const [
+            SizedBox(height: 10),
+            CharactersList(),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class BottomAppBarWidget extends StatelessWidget {
+  const BottomAppBarWidget({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 70,
+      child: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(icon: Icon(Icons.favorite_border_outlined)),
+          BottomNavigationBarItem(icon: Icon(Icons.favorite_border_outlined))
+        ],
       ),
     );
   }
@@ -75,8 +74,8 @@ class ImageAdd extends StatelessWidget {
   Widget build(BuildContext context) {
     return Image.asset(
       _pathAdd,
-      height: 35,
-      width: 100,
+      height: 40,
+      width: 200,
     );
   }
 
@@ -84,7 +83,7 @@ class ImageAdd extends StatelessWidget {
 }
 
 class ImagePath {
-  final String blacksMarvel = "comicsle";
+  final String blacksMarvel = "logotrans";
   final String blacksIcon = "blacksIcon";
 }
 
