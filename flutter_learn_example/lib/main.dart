@@ -17,7 +17,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.light().copyWith(
         appBarTheme: const AppBarTheme(
           titleTextStyle: TextStyle(
-              color: Colors.red, fontFamily: "ArchivoBlack", fontSize: 15),
+              color: Colors.red,
+              fontFamily: "BebasNeue",
+              fontSize: 28,
+              fontWeight: FontWeight.bold),
           centerTitle: true,
           backgroundColor: Colors.transparent,
           elevation: 0,

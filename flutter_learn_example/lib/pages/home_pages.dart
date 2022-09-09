@@ -85,6 +85,7 @@ class ImageAdd extends StatelessWidget {
 class ImagePath {
   final String blacksMarvel = "logotrans";
   final String blacksIcon = "blacksIcon";
+  final String nullValue = "deadpoolIcon";
 }
 
 class ButtonElevat extends StatelessWidget {
@@ -126,18 +127,19 @@ class CharactersList extends StatelessWidget {
     return Flexible(
       fit: FlexFit.tight,
       child: ListView.separated(
-        separatorBuilder: (BuildContext context, int index) => const Divider(),
-        padding: const EdgeInsets.all(8),
+        separatorBuilder: (BuildContext context, int index) =>
+            const Divider(color: Colors.transparent),
+        //padding: const EdgeInsets.all(0.0),
         itemCount: ListCharacters().characters.length,
         itemBuilder: (BuildContext context, int index) {
           return PhysicalModel(
             color: Colors.white,
-            elevation: 10,
+            elevation: 5,
             borderRadius: BorderRadius.circular(30),
             child: Container(
               height: 200,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30),
+                borderRadius: BorderRadius.circular(20),
                 color: Colors.white,
               ),
               child: Row(
@@ -152,12 +154,15 @@ class CharactersList extends StatelessWidget {
                           fit: BoxFit.fill,
                         ),
                         borderRadius: const BorderRadius.only(
-                            bottomLeft: Radius.circular(30),
-                            topLeft: Radius.circular(30))),
+                            bottomLeft: Radius.circular(20),
+                            topLeft: Radius.circular(20))),
                   ),
                   Expanded(
                     child: Column(
                       children: [
+                        const SizedBox(
+                          height: 5,
+                        ),
                         Text(
                           textAlign: TextAlign.left,
                           ListCharacters().characters[index],
