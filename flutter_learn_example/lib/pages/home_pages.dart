@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_learn_example/component/characters.dart';
-import 'package:flutter_learn_example/component/description.dart';
-import 'package:flutter_learn_example/component/images.dart';
-import 'package:flutter_learn_example/component/names.dart';
+import 'package:flutter_learn_example/component/characters_class.dart';
+import 'package:flutter_learn_example/component/description_class.dart';
+import 'package:flutter_learn_example/component/images_class.dart';
+import 'package:flutter_learn_example/component/names_class.dart';
 import 'package:flutter_learn_example/pages/description.dart';
 
 class HomePage extends StatefulWidget {
