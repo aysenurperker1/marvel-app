@@ -7,19 +7,30 @@ class FavoritePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.onPrimary,
+      //backgroundColor: Theme.of(context).colorScheme.onPrimary,
       appBar: AppBar(
         title: const Padding(
           padding: EdgeInsets.only(top: 20),
           child: Text("FAVORITE CHARACTERS"),
         ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(top: 10, right: 15),
+            child: IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.bookmark_outlined),
+              color: Colors.red,
+              iconSize: 25,
+            ),
+          )
+        ],
       ),
       body: Center(
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           SizedBox(
-            height: 170,
+            height: 135,
             child: ImageAdd(name: ImagePath().nullValue),
           ),
           spaceforText(),
